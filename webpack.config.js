@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var autoprefixer = require('autoprefixer')
 
 module.exports = {
   entry: './src/main.js',
@@ -14,7 +15,9 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          // vue-loader options go here
+          sass: 'vue-style-loader!css-loader!postcss-loader!sass-loader?indentedSyntax=1',
+          scss: 'vue-style-loader!css-loader!postcss-loader!sass-loader',
+          pug: 'pug-loader'
         }
       },
       {
@@ -40,7 +43,14 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  plugins: [
+    new webpack.LoaderOptionsPlugin({
+      vue: {
+        postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ]
+      }
+    })
+  ],
 }
 
 if (process.env.NODE_ENV === 'production') {
