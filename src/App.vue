@@ -1,12 +1,21 @@
 <template lang="pug">
 #app.container
   h1 Raider, music for people with bad taste
+  iframe(width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/188590298&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false")
+  iframe(width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/156007118&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false")
+  iframe(width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/140201120&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false")   
+  h2 Want to use my music?
+  p: a(href="https://en.wikipedia.org/wiki/WTFPL" target="_blank") Do whatever the fuck you want
+  hr
+
   h2 Download my crappy music
   ul
     template(v-for="song in songs")
       li
         a(v-bind:href='"mp3/" + song.filename' target='_blank') {{ song.title }}
   pre Right click -> save link as...
+  hr
+
   h2 Follow me on the internet
   ul
     li
@@ -65,7 +74,6 @@ h1, h2
   font-weight: normal
 
 ul
-  list-style-type: none
   padding: 0
 
 li
